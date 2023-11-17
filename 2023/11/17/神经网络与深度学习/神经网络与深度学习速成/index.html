@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+<title>Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Wuleizhenshang&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Wuleizhenshang&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title"></h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">John Doe</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 17, 2023&nbsp;&nbsp;23:36:01</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="神经网络与深度学习速成"><a href="#神经网络与深度学习速成" class="headerlink" title="神经网络与深度学习速成"></a>神经网络与深度学习速成</h1><h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p><strong>神经网络和深度学习</strong>的整体架构包括了各种组件和层次，用于构建、训练和应用复杂的深度学习模型。下面是它们的<strong>一般架构</strong>：</p>
+<ol>
+<li><p><strong>输入层（Input Layer）</strong>：</p>
+<p>输入层接受原始数据，例如图像、文本、声音等，将其转换为神经网络可处理的格式。对于图像数据，可以是像素值；对于文本数据，可以是单词嵌入向量；对于声音数据，可以是声谱图等。输入层通常具有与输入数据的特征数量相对应的节点。</p>
+</li>
+<li><p><strong>隐藏层（Hidden Layers）</strong>：</p>
+<p>隐藏层是神经网络的核心组成部分，它包含多个神经元（或节点），并通过权重连接到前一层的神经元。深度学习中的深度来自于具有多个隐藏层。隐藏层的任务是学习数据的特征表示。常见的隐藏层类型包括全连接层、卷积层、循环层等。</p>
+</li>
+<li><p><strong>激活函数层（Activation Function Layer）</strong>：</p>
+<p>激活函数层用于引入非线性性质到神经网络中，允许网络学习复杂的函数。常见的激活函数包括ReLU（Rectified Linear Unit）、Sigmoid、Tanh等。激活函数在每个神经元上应用，将线性加权和映射到非线性输出。</p>
+</li>
+<li><p><strong>输出层（Output Layer）</strong>：</p>
+<p>输出层产生模型的最终预测结果，其结构和激活函数取决于具体任务。例如，对于二元分类任务，输出层可能包括一个Sigmoid激活函数；对于<strong>多类分类任务</strong>，可能使用Softmax激活函数；对于<strong>回归任务</strong>，输出层通常是一个线性层。</p>
+</li>
+<li><p><strong>损失函数（Loss Function）</strong>：</p>
+<p>损失函数用于度量模型的性能，它比较模型的预测结果和实际标签，并计算损失值。训练过程的目标是最小化损失函数。不同的任务（分类、回归等）和网络架构可能需要不同的损失函数。</p>
+</li>
+<li><p><strong>优化器（Optimizer）</strong>：</p>
+<p>优化器是用于调整模型参数以减小损失的算法。常见的优化算法包括梯度下降（Gradient Descent）、Adam、RMSprop等。优化器在反向传播过程中更新模型的权重和偏差。</p>
+</li>
+<li><p><strong>反向传播（Backpropagation）</strong>：</p>
+<p>反向传播是训练神经网络的<strong>核心算法</strong>。它通过计算损失函数相对于模型参数的梯度，然后<strong>使用优化器来更新参数</strong>。这一过程通过前向传播（计算预测值）和反向传播（计算梯度和参数更新）迭代执行，直到损失最小化。</p>
+</li>
+<li><p><strong>批处理（Batching）</strong>：</p>
+<p>在训练中，通常不是一次处理整个数据集，而是将数据分为小批次进行处理。批处理有助于加速训练过程和提高计算效率。</p>
+</li>
+<li><p><strong>正则化（Regularization）</strong>：</p>
+<p>正则化技术，如L1和L2正则化，可用于减小模型的过拟合风险。正则化项通常添加到损失函数中。</p>
+</li>
+<li><p><strong>超参数调整（Hyperparameter Tuning）</strong>：</p>
+<p>超参数是在训练前需要设置的参数，如学习率、批处理大小、隐藏层节点数等。调整超参数是优化模型性能的重要步骤。</p>
+</li>
+<li><p><strong>模型评估（Model Evaluation）</strong>：</p>
+<p>训练完成后，需要使用验证集或测试集来评估模型的性能。评估指标根据具体任务选择，如准确度、损失值、F1分数等。</p>
+</li>
+<li><p><strong>应用（Deployment）</strong>：</p>
+<p>训练完成的模型可以部署到生产环境中，用于实际应用，如图像识别、自然语言处理、推荐系统等。</p>
+</li>
+</ol>
+<p>整体架构包括了从数据准备和模型构建到训练和部署的完整流程。不同的深度学习任务和模型类型会有不同的变体和组件，但上述架构提供了一般指导。</p>
+<h3 id="简单简介"><a href="#简单简介" class="headerlink" title="简单简介"></a>简单简介</h3><ol>
+<li>数据准备通常是项目的起点，但可以在整个项目周期中多次迭代。你可能需要清理、标记、分割和标准化数据。</li>
+<li>构建模型的顺序通常是定义输入和输出层，选择合适的隐藏层和激活函数，然后初始化模型权重。</li>
+<li>训练模型的过程是迭代的，它包括前向传播、计算损失、反向传播、参数更新等步骤。训练通常会持续多个周期，其中模型参数逐渐收敛。</li>
+<li>模型评估可以在任何时候进行，但通常在训练后进行，用于评估模型的性能。</li>
+<li>超参数调整可能需要多次进行，以找到最佳的超参数设置。</li>
+<li>部署模型通常是在模型训练和评估之后的最后步骤，将模型应用于实际场景。</li>
+</ol>
+<p>学习+个人理解，不一定正确！</p>
+<h3 id="前向传播（完成计算损失）"><a href="#前向传播（完成计算损失）" class="headerlink" title="前向传播（完成计算损失）"></a>前向传播（完成计算损失）</h3><h4 id="得分函数"><a href="#得分函数" class="headerlink" title="得分函数"></a>得分函数</h4><p>W为权重，x在下面例子中表示每个像素点的值，b表示微调，最终得到得分</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310152305186.png" alt="Snipaste_2023-10-14_23-13-30"></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310152307665.png" alt="Snipaste_2023-10-14_23-34-13"></p>
+<h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><p>损失函数有许多，这个以一个举例</p>
+<p>数据损失为通过得分函数得到得分值后计算损失，max中<strong>相减的两项</strong>中<strong>第一项</strong>为判断图片<strong>不是正确类得分</strong>（如图片是猫，那么这一项就是判断为狗的得分），<strong>第二项</strong>为判断图片<strong>是正确类得分</strong>；<strong>max运算完之后求和</strong>（如有三个分类，就有三个得分，那么两个错误类的得分分别与正确类得分做同样操作并相加），后面的<strong>正则化惩罚项</strong>是<strong>权重参数带来的损失</strong>，正则化惩罚项的第一个参数表示容忍程度<strong>（防止过拟合）</strong></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310152251073.png" alt="Snipaste_2023-10-14_23-45-11"></p>
+<h4 id="参数初始化"><a href="#参数初始化" class="headerlink" title="参数初始化"></a>参数初始化</h4><p>参数初始化设计到初始化神经网络的权重的偏重参数</p>
+<p>通常使用随机策略来进行参数初始化</p>
+<p>如<code>W = 0.01 * np.random.randn(D, H)</code></p>
+<h4 id="正则化（通常添加在损失函数中）"><a href="#正则化（通常添加在损失函数中）" class="headerlink" title="正则化（通常添加在损失函数中）"></a>正则化（通常添加在损失函数中）</h4><p>正则化的<strong>本质作用</strong>是防止过拟合、提高模型泛化能力，有助于简化模型。</p>
+<p>常见的正则化技术包括L1正则化、L2正则化、Dropout、权重共享等。</p>
+<p>如上面解释一样，<strong>惩罚力度是正则化项的系数</strong>，决定了正则化在模型训练中的强度，它是一个超参数（超参数（Hyperparameters）是一种特殊的参数，它们不是由模型自动学习而是由人为设置的。超参数控制了模型的训练和学习过程，包括模型的结构、学习率、迭代次数、批处理大小等。），较大的惩罚力度会增加正则化的影响，使模型更倾向于简单的参数设置，从而减小过拟合的风险，但可能损害模型的性能。较小的惩罚力度允许模型更复杂，但可能增加过拟合的风险。</p>
+<h4 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h4><p>过拟合是神经网络非常头疼的一个大问题</p>
+<p>前面提到了可以通过正则化解决，就是加一个正则化惩罚项，这里还有一个解决方法，就是<strong>DROP-OUT</strong>（传说中的七伤拳）</p>
+<p>Dropout是一种随机丢弃部分神经元的方法，可以降低神经网络的复杂性，减轻过拟合。（在训练过程中迭代的过程中随机丢弃一部分神经元）</p>
+<p><strong>整体流程</strong></p>
+<p>回归任务：得分值计算损失</p>
+<p>分类任务：概率值计算损失</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310152318794.png" alt="Snipaste_2023-10-15_00-06-46"></p>
+<h3 id="反向传播（更新W权重）"><a href="#反向传播（更新W权重）" class="headerlink" title="反向传播（更新W权重）"></a>反向传播（更新W权重）</h3><p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310161914984.png" alt="Snipaste_2023-10-15_23-39-28"></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310161914884.png" alt="Snipaste_2023-10-15_23-42-42"></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310161915892.png" alt="Snipaste_2023-10-15_23-45-19"></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310161916647.png" alt="Snipaste_2023-10-15_23-47-13"></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310161916720.png" alt="Snipaste_2023-10-15_23-47-39"></p>
+<h3 id="输入层、输出层、隐藏层"><a href="#输入层、输出层、隐藏层" class="headerlink" title="输入层、输出层、隐藏层"></a>输入层、输出层、隐藏层</h3><p><strong>神经网络架构</strong></p>
+<p>这里的input layer其实就是数据，也就是得分函数中的x，这里可以理解为3个特征（粉色框中3个圆圈），经过一系列的变化，就是乘以W（权重）就可以得到hidden layer1（隐层1），这里变化得到hidden layer1是为了让计算机能更好的理解数据特征，但是这个为什么要这么变化是很难解释的，但是反向传播得出的结果就是这样能够更好地让计算机理解这个特征（计算得到），hidden layer2就是hidden layer1得到的特征再加工、再利用、再转换</p>
+<p>全连接：其实就是图片中展示的一样每个点和下一层的每个点都有连接，当然这是展示出来的，真实就是经过某种变化罢了，不会存在实体的这个线（也就是权重参数矩阵就相当于连接）</p>
+<p>非线性：就是在得到每层后都需要使用非线性函数去映射一个值，如max()就是一个非线性变换，然后再进行运算得到下一个隐层</p>
+<p>神经元：神经元通常位于神经网络的隐藏层，在图中的表示其实就是每个层的圆圈，输入层的神经元数量等于数据的特征数量（正常情况神经元个数越多越好，但是需要考虑过拟合的问题， 神经元个数会导致过拟合问题，过拟合会使效果不好）</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310161920434.png" alt="Snipaste_2023-10-15_23-52-51"></p>
+<h4 id="Softmax分类器"><a href="#Softmax分类器" class="headerlink" title="Softmax分类器"></a>Softmax分类器</h4><p>Softmax函数（归一化）常用于多类别分类问题，常用于多层感知器和深度神经网络的输出层，<strong>（上一层的输出层就是下一层的输入层）</strong></p>
+<p>这里的归一化是根据得分计算得到一个概率值，这个概率值就是根据这个权重值计算得到<strong>当前图片是某个分类的概率</strong>，后面是根据计算值计算损失值（应该理解为另一种计算损失值的函数），这里log取对数，传入的值是0到1的（因为归一化得到的值是0到1），加负号把负值转为正值</p>
+<p><strong>基本都是用对数去做损失函数（用工具包也需要手写损失函数）</strong></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310152307593.png" alt="Snipaste_2023-10-14_23-48-34"></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310152308647.png" alt="Snipaste_2023-10-14_23-58-36"></p>
+<h4 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h4><p>激活函数（Activation Function）是神经网络中的一个关键组成部分，它用来确定神经元的输出是否应该被激活（激活值为1）还是不激活（激活值为0），以及在一定程度上控制神经元的输出范围。激活函数的作用是引入非线性性，使神经网络能够学习和表示更加复杂的函数。<strong>（就是前面提到的每层得到的结果进行非线性变换）</strong></p>
+<p>激活函数通常应用于神经元的输入（加权和）上，然后将结果传递给下一层神经元或输出层。不同的激活函数具有不同的数学形式和性质，以下是一些常见的激活函数：</p>
+<ol>
+<li><strong>阶跃函数（Step Function）</strong>：阶跃函数是一种最简单的激活函数，当输入大于某个阈值时激活，否则不激活。它将输入分为两个类别（0和1），通常用于二元分类问题。然而，阶跃函数在神经网络中的应用有限，因为它不是连续可导的。</li>
+<li><strong>Sigmoid函数</strong>：Sigmoid函数是一种常用的激活函数，将实数输入映射到 (0, 1) 之间。它具有S形曲线，用于二元分类和输出概率估计。Sigmoid函数是连续可导的，但在深度神经网络中<strong>可能存在梯度消失问题</strong>。（可以从它的函数图像看出，当x的负值过小或者正值过大，图像基本就是平的了，计算为0那么在反向传播过程中继续往后传也为0，这个就是梯度消失）</li>
+<li><strong>Tanh函数</strong>：Tanh函数是双曲正切函数，将实数输入映射到 (-1, 1) 之间。与Sigmoid函数相似，Tanh函数具有S形曲线，但它的输出范围在 -1 到 1 之间，使其可以处理正负权重的输入。</li>
+<li><strong>ReLU函数（Rectified Linear Unit）</strong>：ReLU函数是一种非常常见的激活函数，将负数输入置为零，而对正数输入则保持不变。它具有线性关系<strong>（具有线性关系但是整体是非线性的）</strong>，使得训练神经网络更加高效，并减轻了梯度消失问题。<strong>（当前主体）</strong></li>
+<li><strong>Leaky ReLU函数</strong>：Leaky ReLU是ReLU的变种，它在负数输入时不是完全置为零，而是乘以一个小正数。这有助于解决ReLU可能导致的神经元“死亡”问题。</li>
+<li><strong>Softmax函数</strong>：Softmax函数常用于多类别分类问题，将多个输入映射到一个概率分布上，确保所有输出的和为1。它通常用于神经网络的输出层，用于将原始得分转化为类</li>
+</ol>
+<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202310162151910.png" alt="Snipaste_2023-10-16_21-50-39"></p>
+<p>标准化操作（图中例子）</p>
+<p>第一步（中心化）：实际坐标值减去均值，得到原点为中心对称的效果</p>
+<p>第二步（各个维度的放缩或者扩充）：实际坐标值除以标准差</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>John Doe</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2023/11/17/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%80%9F%E6%88%90/">http://example.com/2023/11/17/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%80%9F%E6%88%90/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2023/11/17/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%EF%BC%88%E9%80%89%E4%BF%AE%E8%AF%BE%EF%BC%89/"></a>
+            
+            
+            <a class="next" rel="next" href="/2023/11/17/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95/"></a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© John Doe | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

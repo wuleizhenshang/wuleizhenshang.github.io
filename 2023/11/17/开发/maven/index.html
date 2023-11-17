@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>Hexo</title>
 
 
 
@@ -127,76 +127,11 @@
                 <div class="container">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    var tocbot_timer;
-    var DEPTH_MAX = 6; // 为 6 时展开所有
-    var tocbot_default_config = {
-        tocSelector: '.tocbot-list',
-        contentSelector: '.post-content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        orderedList: false,
-        scrollSmooth: true,
-        onClick: extend_click,
-    };
-
-    function extend_click() {
-        clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
-            tocbot.refresh(obj_merge(tocbot_default_config, {
-                hasInnerContainers: true
-            }));
-        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
-    }
-
-    document.ready(function() {
-        tocbot.init(obj_merge(tocbot_default_config, {
-            collapseDepth: 1
-        }));
-    });
-
-    function expand_toc() {
-        var b = document.querySelector('.tocbot-toc-expand');
-        var expanded = b.getAttribute('data-expanded');
-        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
-        tocbot.refresh(obj_merge(tocbot_default_config, {
-            collapseDepth: expanded ? 1 : DEPTH_MAX
-        }));
-        b.innerText = expanded ? 'Expand all' : 'Collapse all';
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-    function obj_merge(target, source) {
-        for (var item in source) {
-            if (source.hasOwnProperty(item)) {
-                target[item] = source[item];
-            }
-        }
-        return target;
-    }
-</script>
-    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title"></h1>
             
                 <div class="post-meta">
                     
@@ -205,7 +140,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">November 16, 2023&nbsp;&nbsp;23:43:54</a>
+                        Date: <a href="#">November 17, 2023&nbsp;&nbsp;23:36:01</a>
                         </span>
                     
                     
@@ -214,19 +149,54 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            <p>maven的使用</p>
+<ul>
+<li><strong>进入maven官网<a target="_blank" rel="noopener" href="https://maven.apache.org/download.cgi">下载</a>maven</strong></li>
+</ul>
+<p>如Windows系统下载压缩包解压即可<a target="_blank" rel="noopener" href="https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.zip">apache-maven-3.9.5-bin.zip</a></p>
+<ul>
+<li><strong>配置环境变量</strong></li>
+</ul>
+<ol>
+<li>新建一个系统变量，变量名为<code>MAVEN_HOME</code>，对应值为maven压缩包解压位置，如<code>D:\maven\apache-maven-3.9.5</code></li>
+<li>在Path中编辑并新建填入<code>%MAVEN_HOME%\bin</code></li>
+<li>在cmd命令窗口输入 <code>mvn -v</code> 有输出对应版本号即可</li>
+</ol>
+<ul>
+<li><strong>修改maven压缩包解压路径下<code>conf</code>中的<code>setting.xml</code>配置</strong></li>
+</ul>
+<ol>
+<li>自己定义本地仓库路径，maven在本地找不到依赖才会去中央仓库寻找</li>
+</ol>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311022235187.png" alt="image-20231102223541110"></p>
+<ol start="2">
+<li>配置国内镜像</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 中央仓库在中国的镜像 --&gt;</span><br><span class="line">       &lt;mirror&gt;</span><br><span class="line">           &lt;id&gt;alimaven&lt;/id&gt;</span><br><span class="line">           &lt;name&gt;aliyun maven&lt;/name&gt;</span><br><span class="line">           &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;</span><br><span class="line">           &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">       &lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311022240487.png" alt="image-20231102224004439"></p>
+<ul>
+<li><strong>idea中配置maven</strong></li>
+</ul>
+<p><strong>注意：下面的配置只会在本项目生效，若想要以后每个项目都使用相同的配置参考最后第3步配置</strong></p>
+<ol>
+<li>对maven有进行修改就进行相应的路径更改，如setting配置等</li>
+</ol>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311022244903.png" alt="image-20231102224432847"></p>
+<ol start="2">
+<li>配置Runner，输入属性<code>-DarchetypeCatalog=internal</code>，DarchetypeCatalog的值为internal的是让Maven配置项目时首先从本地仓库加载依赖从而加快配置速度</li>
+</ol>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311022250474.png" alt="image-20231102225010415"></p>
+<ol start="3">
+<li><p>设置成为默认配置</p>
+<p>进入settings for new projects，<strong>不同版本进入方式不一样</strong></p>
+</li>
+</ol>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311022313947.png" alt="image-20231102231346897"></p>
+<p>在Compiler中勾选图中选项，之后在maven配置和runner中做相同配置，<strong>勾选选项和maven配置一定要在settings for new projects的界面修改，这样才能成为idea的全局配置</strong></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311022313787.png" alt="image-20231102231320723"></p>
 
         </div>
 
@@ -241,7 +211,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/2023/11/16/hello-world/">http://example.com/2023/11/16/hello-world/</a></span>
+                        <span><a href="http://example.com/2023/11/17/%E5%BC%80%E5%8F%91/maven/">http://example.com/2023/11/17/%E5%BC%80%E5%8F%91/maven/</a></span>
                     </p>
                 
                 
@@ -274,8 +244,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/11/17/%E5%BC%80%E5%8F%91/maven/"></a>
+                <a class="prev" rel="prev" href="/2023/11/17/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95/"></a>
             
+            
+            <a class="next" rel="next" href="/2023/11/16/hello-world/">Hello World</a>
             
         </section>
 

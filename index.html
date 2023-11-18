@@ -1,7 +1,273 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-11-18 09:19:12'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
 
-block content
-  include ./includes/mixins/post-ui.pug
-  #recent-posts.recent-posts
-    +postUI
-    include includes/pagination.pug
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/17/%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E9%80%89%E4%BF%AE%E8%AF%BE%EF%BC%89/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-17T15:36:01.326Z" title="Created 2023-11-17 23:36:01">2023-11-17</time></span></div><div class="content">非关系型数据库（选修课）上课老师发的课件合计，下载地址如下
+https://wwcz.lanzout.com/b04kt28wb
+密码:4a0t
+
+Redis基础内容概述简介
+Remote Dictionary Server，简称Redis，即远程字典服务器，它是一个开源的、高性能的、基于键值对的缓存与存储数据库，并且通过提供多种键值数据结构来适应不同场景下的缓存与存储需求。Redis数据库是基于ANSI C语言编写开发的，并且提供了多种语言API，例如Java、C&#x2F;C++、C#、PHP、JavaScript、Perl、Python及Ruby等语言。
+特点
+
+支持多种数据结构
+功能丰富
+应用广泛
+读写速度快
+
+应用场景
+
+构建队列系统
+排行榜
+实时的垃圾系统
+数据自动过期处理
+计数器应用
+缓存
+
+支持的数据结构
+
+String（字符串）
+List（列表）
+Set（集合）
+Hash（散列）
+Sorted Sets（有序集合）
+
+相关操作其他启动 redis-cli 客户端工具，可以做如下处理：
+修改 cmd 控制台的编码格式为 UTF-8：
+命令：chcp 65001
+然后再输 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/17/Git%EF%BC%88B%E7%AB%99%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%89/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-17T15:36:01.316Z" title="Created 2023-11-17 23:36:01">2023-11-17</time></span></div><div class="content">Git（B站学习笔记）版本控制系统简介版本控制系统是一种记录文件或代码变化的软件工具，用于管理多个版本的文件和代码。它可以追踪文件或代码的修改历史，保存每个版本的快照，使得用户可以轻松地回滚到之前的版本，也可以比较和合并不同版本之间的差异，同时还可以协作开发，多人同时修改同一个文件，版本控制系统可以确保每个人的修改都被记录下来，避免冲突和丢失数据。
+版本控制系统分为集中式版本控制系统和分布式版本控制系统
+
+集中式版本控制系统  
+集中式版本控制系统是把代码的管理和同步放在同一个服务器端来进行，如CVS、SVN(Subversion)，其中SVN的设计目标是取代CVS，现在互联网上很多版本控制服务从CVS迁移到了SVN
+优点：
+
+权限系统完善
+提交修改操作简便
+
+缺点：
+
+打分支需要联网到服务端
+依赖服务器的稳定性
+
+
+
+分布式版本控制系统DVCS(Distributed Version Control System)   
+分布式版本控制系统相当于把集中式版本控制系统的服务端和客户端都交给参与开发的客户端来保管，只要需要不同开发者合并代码时，才需要一个中转站来完成。如Git
+优点：
+
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/17/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%EF%BC%88%E9%80%89%E4%BF%AE%E8%AF%BE%EF%BC%89/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-17T15:36:01.316Z" title="Created 2023-11-17 23:36:01">2023-11-17</time></span></div><div class="content">自然语言处理（选修课）理论部分简介NLP分析技术大致分为三个层面：词法分析、句法分析和语义分析。
+
+词法分析
+词法分析是为了分析文本中的词汇和标记，主要任务包括分词、词性标注、命名实体识别。
+
+分词：将文本分割成单词、标记或短语的过程。分词是NLP任务的基础。
+词性标注：词性标注是为文本中的每个单词或标记分配一个词性（名词、动词、形容词等）的过程。
+命名实体识别：命名实体识别是用于识别文本中的命名实体，如人名、地名、组织名、日期等的任务。
+
+
+句法分析
+句法分析涉及理解句子的结构和语法关系，以便对文本进行更深入的分析和理解。两种主流的句法分析方法为短语结构句法体系、依存结构句法体系（后者为当前热点）。
+
+依存句法分析：依存句法分析研究词汇之间的依存关系，即一个词与句子中其他词之间的语法依赖关系。这些依赖关系通常表示为有向图中的弧，其中一个词是另一个词的依赖项。依存句法分析有助于理解词与词之间的语法关系，如主谓关系、修饰关系等。
+短语结构句法分析：短语结构句法分析关注句子中短语的结构，包括短语的组成和嵌套关系。这种分析将句子分解为短语和子句，以揭示句子的语法结构。
+
+
+语义分析
+语义分析 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/17/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%80%9F%E6%88%90/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-17T15:36:01.296Z" title="Created 2023-11-17 23:36:01">2023-11-17</time></span></div><div class="content">神经网络与深度学习速成整体架构神经网络和深度学习的整体架构包括了各种组件和层次，用于构建、训练和应用复杂的深度学习模型。下面是它们的一般架构：
+
+输入层（Input Layer）：
+输入层接受原始数据，例如图像、文本、声音等，将其转换为神经网络可处理的格式。对于图像数据，可以是像素值；对于文本数据，可以是单词嵌入向量；对于声音数据，可以是声谱图等。输入层通常具有与输入数据的特征数量相对应的节点。
+
+隐藏层（Hidden Layers）：
+隐藏层是神经网络的核心组成部分，它包含多个神经元（或节点），并通过权重连接到前一层的神经元。深度学习中的深度来自于具有多个隐藏层。隐藏层的任务是学习数据的特征表示。常见的隐藏层类型包括全连接层、卷积层、循环层等。
+
+激活函数层（Activation Function Layer）：
+激活函数层用于引入非线性性质到神经网络中，允许网络学习复杂的函数。常见的激活函数包括ReLU（Rectified Linear Unit）、Sigmoid、Tanh等。激活函数在每个神经元上应用，将线性加权和映射到非线性输出。
+
+输出层（Output Layer）：
+输出层 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/17/%E7%AE%97%E6%B3%95/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-17T15:36:01.296Z" title="Created 2023-11-17 23:36:01">2023-11-17</time></span></div><div class="content">算法加油！！！
+递归改写迭代引入队列是递归改写程序常做方法，然后借助循环
+12345678910111213141516171819202122232425262728293031323334353637383940414243//递归public boolean isSymmetric(TreeNode root) &#123;    return check(root,root);&#125;public boolean check(TreeNode left,TreeNode right)&#123;    if (left==null&amp;&amp;right==null)&#123;        return true;    &#125;    if (left==null||right==null)&#123;        return false;    &#125;    return left.val== right.val&amp;&amp;check(left.left,right.right)&amp;&amp;check(left.right,rig ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/17/maven/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-17T15:36:01.286Z" title="Created 2023-11-17 23:36:01">2023-11-17</time></span></div><div class="content">maven的使用
+
+进入maven官网下载maven
+
+如Windows系统下载压缩包解压即可apache-maven-3.9.5-bin.zip
+
+配置环境变量
+
+
+新建一个系统变量，变量名为MAVEN_HOME，对应值为maven压缩包解压位置，如D:\maven\apache-maven-3.9.5
+在Path中编辑并新建填入%MAVEN_HOME%\bin
+在cmd命令窗口输入 mvn -v 有输出对应版本号即可
+
+
+修改maven压缩包解压路径下conf中的setting.xml配置
+
+
+自己定义本地仓库路径，maven在本地找不到依赖才会去中央仓库寻找
+
+
+
+配置国内镜像
+
+1234567&lt;!-- 中央仓库在中国的镜像 --&gt;       &lt;mirror&gt;           &lt;id&gt;alimaven&lt;/id&gt;           &lt;name&gt;aliyun maven&lt;/name&gt;           &lt;url&gt;http://maven.aliyun.com/nexus/content/gr ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/16/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-11-16T15:43:54.792Z" title="Created 2023-11-16 23:43:54">2023-11-16</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run server1$ hexo server
+
+More info: Server
+Generate static files1$ hexo generate
+
+More info: Generating
+Deploy to remote sites1$ hexo deploy
+
+More info: Deployment
+</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/17/%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E9%80%89%E4%BF%AE%E8%AF%BE%EF%BC%89/" title="Untitled">Untitled</a><time datetime="2023-11-17T15:36:01.326Z" title="Created 2023-11-17 23:36:01">2023-11-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/17/Git%EF%BC%88B%E7%AB%99%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%89/" title="Untitled">Untitled</a><time datetime="2023-11-17T15:36:01.316Z" title="Created 2023-11-17 23:36:01">2023-11-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/17/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%EF%BC%88%E9%80%89%E4%BF%AE%E8%AF%BE%EF%BC%89/" title="Untitled">Untitled</a><time datetime="2023-11-17T15:36:01.316Z" title="Created 2023-11-17 23:36:01">2023-11-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/17/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%80%9F%E6%88%90/" title="Untitled">Untitled</a><time datetime="2023-11-17T15:36:01.296Z" title="Created 2023-11-17 23:36:01">2023-11-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/17/%E7%AE%97%E6%B3%95/" title="Untitled">Untitled</a><time datetime="2023-11-17T15:36:01.296Z" title="Created 2023-11-17 23:36:01">2023-11-17</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">November 2023</span><span class="card-archive-list-count">7</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">7</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-11-18T01:19:12.556Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

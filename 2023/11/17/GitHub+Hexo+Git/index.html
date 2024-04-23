@@ -1,0 +1,339 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>GitHub Pages+Hexo+Git快速搭建个人博客 | Blog-无泪真伤</title><meta name="author" content="无泪真伤"><meta name="copyright" content="无泪真伤"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="GitHub Pages+Hexo+Git快速搭建个人博客环境介绍Node.js简介 Node.js发布于2009年5月，由Ryan Dahl开发，是一个基于Chrome V8引擎的JavaScript运行环境，使用了一个事件驱动、非阻塞式I&#x2F;O模型，让JavaScript 运行在服务端的开发平台，它让JavaScript成为与PHP、Python、Perl、Ruby等服务端语言平起平坐">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitHub Pages+Hexo+Git快速搭建个人博客">
+<meta property="og:url" content="https://www.wuleizhenshang.love/2023/11/17/GitHub+Hexo+Git/index.html">
+<meta property="og:site_name" content="Blog-无泪真伤">
+<meta property="og:description" content="GitHub Pages+Hexo+Git快速搭建个人博客环境介绍Node.js简介 Node.js发布于2009年5月，由Ryan Dahl开发，是一个基于Chrome V8引擎的JavaScript运行环境，使用了一个事件驱动、非阻塞式I&#x2F;O模型，让JavaScript 运行在服务端的开发平台，它让JavaScript成为与PHP、Python、Perl、Ruby等服务端语言平起平坐">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65597baac458853aef754b7b.jpg">
+<meta property="article:published_time" content="2023-11-17T10:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-19T04:59:31.964Z">
+<meta property="article:author" content="无泪真伤">
+<meta property="article:tag" content="其他">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/65597baac458853aef754b7b.jpg"><link rel="shortcut icon" href="/img/86634.jpg"><link rel="canonical" href="https://www.wuleizhenshang.love/2023/11/17/GitHub+Hexo+Git/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 无泪真伤","link":"链接: ","source":"来源: Blog-无泪真伤","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'GitHub Pages+Hexo+Git快速搭建个人博客',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-19 12:59:31'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic.imgdb.cn/item/65582252c458853aeff7c6f5.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.imgdb.cn/item/65597baac458853aef754b7b.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Blog-无泪真伤"><span class="site-name">Blog-无泪真伤</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">GitHub Pages+Hexo+Git快速搭建个人博客</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-17T10:00:00.000Z" title="发表于 2023-11-17 18:00:00">2023-11-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-19T04:59:31.964Z" title="更新于 2023-11-19 12:59:31">2023-11-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="GitHub Pages+Hexo+Git快速搭建个人博客"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="GitHub-Pages-Hexo-Git快速搭建个人博客"><a href="#GitHub-Pages-Hexo-Git快速搭建个人博客" class="headerlink" title="GitHub Pages+Hexo+Git快速搭建个人博客"></a>GitHub Pages+Hexo+Git快速搭建个人博客</h1><h2 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h2><h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p><strong>简介</strong></p>
+<p>Node.js发布于2009年5月，由Ryan Dahl开发，是一个基于Chrome V8引擎的JavaScript运行环境，使用了一个事件驱动、非阻塞式I&#x2F;O模型，让JavaScript 运行在服务端的开发平台，它让JavaScript成为与PHP、Python、Perl、Ruby等服务端语言平起平坐的脚本语言。</p>
+<p><strong>简单理解</strong></p>
+<p> 脚本语言需要一个解析器才能运行，JavaScript是脚本语言，在不同的位置有不一样的解析器，如写入html的js语言，浏览器是它的解析器角色。而对于需要独立运行的JS，nodejs就是一个解析器。</p>
+<p><strong>官网</strong></p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/en">Node.js (nodejs.org)</a></p>
+<p><strong>安装教程</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/muzidigbig/article/details/80493880">NodeJS入门（一）—nodejs详细安装步骤_nodejs安装及环境配置-CSDN博客</a></p>
+<p><strong>其他</strong></p>
+<p>并且Node.js为大多数平台提供了官方的安装程序，可以通过Node.js的相关命令在命令行安装官方安装程序。</p>
+<p>安装完成后可以通过<code>node -v</code>查看node.js的版本，安装Node.js后npm（Node Package Manager）会随之安装，这是因为 npm 在 Node.js 生态系统中被广泛使用，几乎所有的 Node.js 项目都依赖于 npm 来管理项目的依赖关系和构建任务，可以通过<code>npm -v</code>命令查看npm的版本。</p>
+<hr>
+<h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><p><strong>简介</strong></p>
+<p>Git 是一个免费且开源的分布式版本控制系统，旨在处理从小型到 具有速度和效率的超大型项目。</p>
+<p>Git 易于学习，占用空间小，性能快如闪电。 它优于 Subversion、CVS、Perforce 和 ClearCase 等 SCM 工具 具有廉价本地分支等功能， 方便的暂存区域和多个工作流程。</p>
+<p><strong>官网</strong></p>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/">Git (git-scm.com)</a></p>
+<p><strong>安装教程</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mukes/article/details/115693833?ops_request_misc=%7B%22request_id%22:%22170018840816800213035331%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=170018840816800213035331&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-115693833-null-null.142%5Ev96%5Epc_search_result_base9&utm_term=Git%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B&spm=1018.2226.3001.4187">【精选】Git 详细安装教程（详解 Git 安装过程的每一个步骤）_git安装_mukes的博客-CSDN博客</a></p>
+<p><strong>其他</strong></p>
+<p>下面是Git和GitHub的一些介绍，Hexo初始化项目需要通过Git去拉取</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jiahuan_/article/details/105933423?ops_request_misc=%7B%22request_id%22:%22170018857116800211523315%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=170018857116800211523315&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-105933423-null-null.142%5Ev96%5Epc_search_result_base9&utm_term=Git%E5%92%8CGithub&spm=1018.2226.3001.4187">Git和Github详细入门教程（别再跟我说你不会Git和Github)_git github-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a2360051431/article/details/130836633?ops_request_misc=%7B%22request_id%22:%22170018857116800211523315%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=170018857116800211523315&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-130836633-null-null.142%5Ev96%5Epc_search_result_base9&utm_term=Git%E5%92%8CGithub&spm=1018.2226.3001.4187">一篇文章搞懂Git与Github_git github_一名机电研究生的博客-CSDN博客</a></p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p><strong>简介</strong></p>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他标记语言）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<p><strong>官网</strong></p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo官网</a></p>
+<p><strong>安装教程</strong></p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></p>
+<p><strong>其他</strong></p>
+<p>可以直接从官网的文档中了解Hexo的具体使用</p>
+<p>Hexo的在GitHub的项目地址</p>
+<p><a target="_blank" rel="noopener" href="https://githubfast.com/hexojs/hexo">hexojs&#x2F;hexo：一个快速、简单和强大的博客框架，由 Node.js 提供支持。 (githubfast.com)</a></p>
+<p><strong>常用命令</strong></p>
+<p><code>hexo clean</code> 清除已生成文件及缓存</p>
+<p><code>hexo generate</code> 生成静态页面，简写做 <code>hexo g</code></p>
+<p><code>hexo deploy</code>推送到 github 库，简写做<code> hexo d</code></p>
+<p><code>hexo server </code>启动本地 WEB 服务器，简写做 <code>hexo s</code></p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><ol>
+<li><p>安装Node.js</p>
+</li>
+<li><p>安装Git</p>
+</li>
+<li><p>安装Hexo</p>
+</li>
+<li><p>安装部署插件</p>
+<p>在Hexo目录下通过Git Bash</p>
+<p><code>npm install hexo-deployer-git --save</code></p>
+</li>
+<li><p>Hexo初始化项目</p>
+<p>在你需要存放项目的路径下打开Git Bash输入<code>hexo init &lt;folder&gt;</code>，这里我输入<code>hexo init myBlog</code>就会在路径下生成<code>myBlog</code>文件夹，之后输入<code>cd &lt;folder&gt;</code>就进入生成的文件夹，这里输入<code>cd myBlog</code>，最后输入<code>npm install</code>即可</p>
+</li>
+<li><p>简单运行</p>
+<p>在初始化项目路径下（如使用上面命令那么初始化项目路径就是<code>myBlog</code>）通过<code>Git Bash</code>（在文件夹下右击选择<code>Open Git Bash here</code>打开命令行窗口）使用<code>Hexo s</code>后就开启服务，可以在本地浏览器访问<code>localhost:4000</code>访问到Hexo初始化的项目构建的网站了，Hexo服务的默认端口是4000，如果端口出现了冲突可以使用<code>Hexo s -p 2000</code>命令指定端口号（这里指定端口号为2000）</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191208281.png"></p>
+</li>
+</ol>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191208588.png" alt="image-20231117110109912"></p>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><h3 id="加载主题"><a href="#加载主题" class="headerlink" title="加载主题"></a>加载主题</h3><p>可以通过官网从已有的主题中选择自己喜欢的主题以应用到网站主页，我选择的主题是Butterfly</p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">Themes | Hexo|主题官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.butterfly1.cn/problem.html">Hexo-Butterfly主题 | 主题文档(🦋Hexo butterfly theme document) (butterfly1.cn)</a></p>
+<ul>
+<li><p>首先需要先下载主题，可以直接下载，如果作者有在其他地方（如GitHub）进行介绍使用Git的下载方式也可以使用，下载主题后放置到项目的<code>themes</code>目录下（自行从Hexo官网查阅项目初始化不同文件夹的作用）</p>
+</li>
+<li><p>修改Hexo初始项目下的<code>_config.yml</code>文件（不是下载的主题目录下的）中的<code>theme</code>属性指定主题，<strong>注意theme:后面加空格再接值</strong></p>
+</li>
+</ul>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191209345.png" alt="image-20231117113139545"></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191209868.png" alt="image-20231119111518672"></p>
+<ul>
+<li>之后执行<code>hexo g</code>（清除缓存，生成新的静态文件)然后再<code>hexo s</code>运行，刷新界面即可看到变化</li>
+</ul>
+<h3 id="修改主题配置"><a href="#修改主题配置" class="headerlink" title="修改主题配置"></a>修改主题配置</h3><p>可以继续在项目的<code>_config.yml</code>文件下配置一下基本信息</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="comment">#标题</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">myBlog</span></span><br><span class="line"><span class="comment">#副标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">记录学习</span></span><br><span class="line"><span class="comment">#个性签名</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">加油！</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="comment">#作者</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">无泪真伤</span></span><br><span class="line"><span class="comment">#语言</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="comment">#中国的时区</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">Asia/Shanghai</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>之后可以配置主题相关的了，更加详细的配置可以查阅相关主题的文档介绍，这里只进行简单介绍，<strong>修改主题可以按照官网的建议来（非常详细了）</strong>，也可以直接在下载的主题目录下的<code>_config.yml</code>文件中直接修改，可以直接使用记事本打开搜索关键词快速定位到相应配置的地方</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mjh1667002013/article/details/129290903">非官网介绍主题配置</a></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Menu 目录，显示在顶部</span></span><br><span class="line"><span class="comment"># 这里只演示了简单写法，具体参考官方文档，按需求使用</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="string">首页:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="string">时间轴:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="string">分类:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-folder-open</span></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment"># Code Blocks (代码相关)</span></span><br><span class="line"><span class="comment"># --------------------------------------</span></span><br><span class="line"><span class="comment"># 代码主题</span></span><br><span class="line"><span class="attr">highlight_theme:</span> <span class="string">pale</span> <span class="string">night</span> <span class="comment">#  darker / pale night / light / ocean / mac / mac light / false</span></span><br><span class="line"><span class="comment"># 代码是否显示复制按钮</span></span><br><span class="line"><span class="attr">highlight_copy:</span> <span class="literal">true</span> <span class="comment"># copy button</span></span><br><span class="line"><span class="comment"># 显示代码使用的语言，这个是自己在markdown中标注的语言</span></span><br><span class="line"><span class="attr">highlight_lang:</span> <span class="literal">true</span> <span class="comment"># show the code language</span></span><br><span class="line"><span class="comment"># 是否自动展开</span></span><br><span class="line"><span class="attr">highlight_shrink:</span> <span class="literal">false</span> <span class="comment"># true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button</span></span><br><span class="line"><span class="comment"># 代码高度限制，可展开，要限制把false替换成具体数字，单位为px</span></span><br><span class="line"><span class="attr">highlight_height_limit:</span> <span class="literal">false</span> <span class="comment"># unit: px</span></span><br><span class="line"><span class="comment"># 代码过长自动换行</span></span><br><span class="line"><span class="attr">code_word_wrap:</span> <span class="literal">true</span>  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Favicon（网站图标）</span></span><br><span class="line"><span class="attr">favicon:</span> <span class="string">/img/86634.jpg</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 边栏</span></span><br><span class="line"><span class="comment"># Avatar (头像)</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="attr">img:</span> <span class="comment"># http可以直接输入图床图像进行加载，也可以使用本地img下的图像</span></span><br><span class="line">  <span class="comment"># 头像是否一直旋转</span></span><br><span class="line">  <span class="attr">effect:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 不展示顶部图像</span></span><br><span class="line"><span class="attr">disable_top_img:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置顶部图片</span></span><br><span class="line"><span class="attr">index_img:</span> <span class="string">https://pic.imgdb.cn/item/655825b2c458853aef027a19.jpg</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文章详情页顶部图片，没有在front-matter设置top_img和cover下使用该图</span></span><br><span class="line"><span class="attr">default_top_img:</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 归档顶部图像</span></span><br><span class="line"><span class="attr">archive_img:</span> <span class="string">https://pic.imgdb.cn/item/65582792c458853aef088495.jpg</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># tag界面顶部图像</span></span><br><span class="line"><span class="attr">tag_img:</span> <span class="string">https://pic.imgdb.cn/item/65582792c458853aef088495.jpg</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 单独设置</span></span><br><span class="line"><span class="comment"># format:</span></span><br><span class="line"><span class="comment">#  - tag name: xxxxx</span></span><br><span class="line"><span class="attr">tag_per_img:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分类界面顶部图像</span></span><br><span class="line"><span class="attr">category_img:</span> <span class="string">https://pic.imgdb.cn/item/65582792c458853aef088495.jpg</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 单独设置</span></span><br><span class="line"><span class="comment"># format:</span></span><br><span class="line"><span class="comment">#  - category name: xxxxx</span></span><br><span class="line"><span class="attr">category_per_img:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cover:</span></span><br><span class="line">  <span class="comment"># 是否显示文章封面</span></span><br><span class="line">  <span class="attr">index_enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">aside_enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">archives_enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># the position of cover in home page (封面位置)</span></span><br><span class="line">  <span class="comment"># left/right/both</span></span><br><span class="line">  <span class="attr">position:</span> <span class="string">both</span></span><br><span class="line">  <span class="comment"># When cover is not set, the default cover is displayed (没有设置cover时，默认显示)</span></span><br><span class="line">  <span class="comment"># 随机选择，前面加上-</span></span><br><span class="line">  <span class="attr">default_cover:</span></span><br><span class="line">      <span class="comment"># - https://pic.imgdb.cn/item/65586ff1c458853aef149c7e.jpg</span></span><br><span class="line">      <span class="comment"># - https://pic.imgdb.cn/item/65587027c458853aef156fb1.jpg</span></span><br><span class="line">      <span class="comment"># - https://pic.imgdb.cn/item/6558704bc458853aef160963.jpg</span></span><br><span class="line">      <span class="comment"># - https://pic.imgdb.cn/item/6558706bc458853aef16912a.jpg</span></span><br><span class="line">      <span class="comment"># - https://pic.imgdb.cn/item/65587081c458853aef16f416.jpg</span></span><br><span class="line">    <span class="comment"># - https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace Broken Images (替换无法显示的图片)</span></span><br><span class="line"><span class="attr">error_img:</span></span><br><span class="line">  <span class="attr">flink:</span> <span class="string">/img/friend_404.gif</span></span><br><span class="line">  <span class="attr">post_page:</span> <span class="string">/img/404.jpg</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># A simple 404 page（404图片）</span></span><br><span class="line"><span class="attr">error_404:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">subtitle:</span> <span class="string">&#x27;Page Not Found&#x27;</span></span><br><span class="line">  <span class="attr">background:</span> <span class="string">https://i.loli.net/2020/05/19/aKOcLiyPl2JQdFD.png</span>  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="comment"># the subtitle on homepage (主页subtitle)</span></span><br><span class="line"><span class="attr">subtitle:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Typewriter Effect (打字效果)</span></span><br><span class="line">  <span class="attr">effect:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Customize typed.js (配置typed.js)</span></span><br><span class="line">  <span class="comment"># https://github.com/mattboldt/typed.js/#customization</span></span><br><span class="line">  <span class="attr">typed_option:</span></span><br><span class="line">  <span class="comment"># source 调用第三方服务</span></span><br><span class="line">  <span class="comment"># source: false 开关</span></span><br><span class="line">  <span class="comment"># source: 1  調用一言網的一句話（簡體） https://hitokoto.cn/</span></span><br><span class="line">  <span class="comment"># source: 2  調用一句網（簡體） https://yijuzhan.com/</span></span><br><span class="line">  <span class="comment"># source: 3  調用今日詩詞（簡體） https://www.jinrishici.com/</span></span><br><span class="line">  <span class="comment"># subtitle 會先顯示 source , 再顯示 sub 的內容</span></span><br><span class="line">  <span class="attr">source:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># 如果打开打字效果，subtitle 只会显示 sub 的第一行文字</span></span><br><span class="line">  <span class="attr">sub:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">如果你很迷茫的话就去读书，健身，这是唯一你付出就会有回报的东西</span>  </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> <span class="attr">theme_color:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># main: &quot;#2D4554&quot; # 主要的颜色，底部，选中，按钮等</span></span><br><span class="line">  <span class="attr">main:</span> <span class="string">&quot;#15405D&quot;</span></span><br><span class="line">  <span class="comment"># paginator: &quot;#00c4b6&quot;  # 页码选中颜色</span></span><br><span class="line">  <span class="attr">paginator:</span> <span class="string">&quot;#30867F&quot;</span></span><br><span class="line">  <span class="comment"># button_hover: &quot;#FF7242&quot; # 按钮选中按钮</span></span><br><span class="line">  <span class="attr">button_hover:</span> <span class="string">&quot;#00c4b6&quot;</span></span><br><span class="line">  <span class="comment"># text_selection: &quot;#00c4b6&quot; # 复制等鼠标滑动选择一段字时的颜色</span></span><br><span class="line">  <span class="attr">text_selection:</span> <span class="string">&quot;#509892&quot;</span></span><br><span class="line">  <span class="comment"># meta_color: &quot;#858585&quot; # 显示发布时间等的字体颜色</span></span><br><span class="line">  <span class="attr">meta_color:</span> <span class="string">&quot;#858585&quot;</span></span><br><span class="line">  <span class="comment"># hr_color: &quot;#A4D8FA&quot; #暂时不知道</span></span><br><span class="line">  <span class="comment"># hr_color: &quot;#F70456&quot;</span></span><br><span class="line">  <span class="attr">code_foreground:</span> <span class="string">&quot;#F47466&quot;</span></span><br><span class="line">  <span class="attr">code_background:</span> <span class="string">&quot;rgba(27, 31, 35, .05)&quot;</span></span><br><span class="line">  <span class="comment"># toc_color: &quot;#00c4b6&quot; # 目录显示toc，就是阅读界面选中颜色</span></span><br><span class="line">  <span class="attr">toc_color:</span> <span class="string">&quot;#30867F&quot;</span></span><br><span class="line">  <span class="comment"># blockquote_padding_color: &quot;#49b1f5&quot;</span></span><br><span class="line">  <span class="comment"># blockquote_background_color: &quot;#49b1f5&quot; # 暂时这个和上面的不知道</span></span><br><span class="line">  <span class="comment"># blockquote_background_color: &quot;#01101B&quot;</span></span><br><span class="line">  <span class="comment"># scrollbar_color: &quot;#49b1f5&quot; # 滑动条颜色</span></span><br><span class="line">  <span class="attr">scrollbar_color:</span> <span class="string">&quot;#2A536D&quot;</span></span><br><span class="line">  <span class="comment"># meta_theme_color_light: &quot;ffffff&quot;</span></span><br><span class="line">  <span class="comment"># meta页面是显示文章相关信息的</span></span><br><span class="line">  <span class="comment"># meta_theme_color_light: &quot;#BDBBBB&quot;</span></span><br><span class="line">  <span class="comment"># meta_theme_color_light: &quot;#0d0d0d&quot;</span></span><br><span class="line">  <span class="comment"># meta_theme_color_dark: &quot;#0d0d0d&quot;</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="comment"># Website Background (设置网站背景)</span></span><br><span class="line"><span class="comment"># can set it to color or image (可设置图片或者颜色)</span></span><br><span class="line"><span class="comment"># The formal of image: url(http://xxxxxx.com/xxx.jpg)</span></span><br><span class="line"><span class="attr">background:</span> <span class="string">url(https://pic.imgdb.cn/item/6558cafec458853aef90363f.jpg)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="博客书写规则"><a href="#博客书写规则" class="headerlink" title="博客书写规则"></a>博客书写规则</h3><p>这里直接看网站文档介绍，讲的很清楚了</p>
+<p><a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/dc584b87/#Post-Front-matter">Butterfly 安裝文檔(二) 主題頁面 | Butterfly</a></p>
+<h3 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h3><ul>
+<li><p>这里需要先在Git中配置SSH，（GitHub推荐使用方式）可以在博客发布的Git相关文章中查阅到，不懂的可以先看Git的文章</p>
+</li>
+<li><p>新建GitHub仓库，我的仓库名<code>为wuleizhenshang.github.io</code>用来存放博客，并在<code>_config.yml</code>中进行配置</p>
+<p> <img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191209638.png" alt="image-20231117222658079"></p>
+</li>
+<li><p>之后在Git Bash中输入<code>hexo g</code>等待生成完成后输入<code>hexo d</code>上传到配置文件设置的GitHub的仓库上，可以手动把md文件放到<code>source/_posts</code>下</p>
+</li>
+<li><p>之后就可以通过指定的网址进行访问，这里我的仓库名为<code>wuleizhenshang.github.io</code>，之后在浏览器输入仓库名作为网址就可以访问</p>
+</li>
+</ul>
+<h3 id="特别说明"><a href="#特别说明" class="headerlink" title="特别说明"></a>特别说明</h3><p><strong>如果使用图床写博客的话需要在Hexo中做一些更改</strong></p>
+<p>http请求体的header中有一个referrer字段，用来表示发起http请求的源地址信息，这个referrer信息是可以省略但是不可修改的，就是说你只能设置是否带上这个referrer信息，不能定制referrer里面的值。服务器端在拿到这个referrer值后就可以进行相关的处理，比如图片资源，可以通过referrer值判断请求是否来自本站，若不是则返回403或者重定向返回其他信息，从而实现图片的防盗链。上面出现403就是因为，请求的是别人服务器上的资源，但把自己的referrer信息带过去了，被对方服务器拦截返回了403。这样加载不到图床的图像。</p>
+<p><strong>解决</strong></p>
+<p>在下载的主题目录下的<code>layout/includes</code>目录下有一个<code>head.pug</code>文件，修改该文件的meta信息，会使生成的所有页面都带有该head。在head.pug文件中添加如下内容，结果参见图片。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">meta</span>(name=<span class="string">&quot;referrer&quot;</span> content=<span class="string">&quot;no-referrer&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191209470.png" alt="image-20231119120805384"></p>
+<h3 id="可能遇到问题"><a href="#可能遇到问题" class="headerlink" title="可能遇到问题"></a>可能遇到问题</h3><p>   <strong>仓库公开才允许访问</strong></p>
+<p>   GitHub官网有说明，公开的仓库或者升级仓库才能使用GitHub Pages功能，升级需要付费，这里把仓库设置为公开仓库就好</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191209967.png" alt="image-20231117212215793"></p>
+<p>​		修改仓库是否为公开在仓库的设置的基础设置的最下面可以进行修改</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191209049.png" alt="image-20231117212448073"></p>
+<p><strong>仓库为公开但输入网址为404</strong></p>
+<p>可能访问网址发现打不开可能需要等待一下，过段时间才能部署好，还有就是可能需要在GitHub Pages中设置一下解析的分支</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191209624.png" alt="image-20231117212606182"></p>
+<h2 id="原理说明"><a href="#原理说明" class="headerlink" title="原理说明"></a>原理说明</h2><p>首先需要了解GitHub Pages是什么，可以通过下面的链接查看具体的介绍</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/647963756">GitHub Pages 是什么？ - 知乎 (zhihu.com)</a></p>
+<p>通过Hexo快速生成静态网页后通过Git上传到GitHub的仓库上，在仓库设置中设置GitHub Pages访问的网页为生成的静态网页就实现了具体的功能，而Node.js就是运行Hexo的必要环境。</p>
+<h2 id="绑定个人域名"><a href="#绑定个人域名" class="headerlink" title="绑定个人域名"></a>绑定个人域名</h2><p>绑定个人域名后可以输入个人域名跳转到GitHub Pages页面</p>
+<ol>
+<li><p>首先需要拥有一个个人域名，自行购买</p>
+</li>
+<li><p>添加CNAME文件，共有三种方式进行创建</p>
+<ul>
+<li><p>直接在Hexo初始化的项目下的<code>source</code>文件夹在新建<code>CNAME</code>文件（这个文件没有后缀名，可以先创建为txt文件，修改完后删除后缀），里面输入自己的域名即可</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191209005.png" alt="image-20231117215745546"></p>
+</li>
+</ul>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191209131.png" alt="image-20231117215818235"></p>
+<ul>
+<li><p>直接在GitHub项目主页里面的<code>Create new file</code>按钮进行创建，因为在本地创建完上传项目到GitHub也会一起上传这个文件</p>
+</li>
+<li><p>在GitHub项目中的Setting标签下的Custom domain中直接填入域名，然后点击Save保存即可</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191210369.png" alt="image-20231117215351427"></p>
+</li>
+</ul>
+</li>
+<li><p>配置域名解析，我这里是腾讯云购买的域名</p>
+<p>配置<code>CNAME</code>记录类型，主机记录可以写为<code>www</code>，记录值可以写为你的域名，这样可以通过www+你的域名访问到GitHub Pages，路线类型选默认类型就行</p>
+</li>
+</ol>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191210221.png" alt="image-20231117232828687"></p>
+<ol start="4">
+<li><p>设置为Https安全访问</p>
+<p>在域名解析完成后可Enforce HTTPS就可以勾选了，勾选后就可以进行Https安全访问</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/202311191210013.png" alt="image-20231117231934712"></p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.wuleizhenshang.love">无泪真伤</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.wuleizhenshang.love/2023/11/17/GitHub+Hexo+Git/">https://www.wuleizhenshang.love/2023/11/17/GitHub+Hexo+Git/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.wuleizhenshang.love" target="_blank">Blog-无泪真伤</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%85%B6%E4%BB%96/">其他</a></div><div class="post_share"><div class="social-share" data-image="https://pic.imgdb.cn/item/65597baac458853aef754b7b.jpg" data-sites="wechat,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/11/18/%E7%AE%97%E6%B3%95/" title="算法"><img class="cover" src="https://pic.imgdb.cn/item/65587081c458853aef16f416.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">算法</div></div></a></div><div class="next-post pull-right"><a href="/2023/10/11/%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E9%80%89%E4%BF%AE%E8%AF%BE%EF%BC%89/" title="非关系型数据库（选修课）"><img class="cover" src="https://pic.imgdb.cn/item/6558704bc458853aef160963.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">非关系型数据库（选修课）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/28/%E5%87%86%E5%A4%87/" title="小白个人Android面试准备"><img class="cover" src="https://pic.imgdb.cn/item/65df52089f345e8d030edde4.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-28</div><div class="title">小白个人Android面试准备</div></div></a></div><div><a href="/2024/02/28/%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E5%87%86%E5%A4%87/" title="小白个人面试算法准备"><img class="cover" src="https://pic.imgdb.cn/item/6602823e9f345e8d03cbcbff.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-28</div><div class="title">小白个人面试算法准备</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic.imgdb.cn/item/65582252c458853aeff7c6f5.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">无泪真伤</div><div class="author-info__description">不会爱，不愿爱！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wuleizhenshang"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本人新人一枚！写博客知识记录个人学习经历，有错误请见谅！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GitHub-Pages-Hexo-Git%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">GitHub Pages+Hexo+Git快速搭建个人博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">环境介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js"><span class="toc-number">1.1.1.</span> <span class="toc-text">Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git"><span class="toc-number">1.1.2.</span> <span class="toc-text">Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo"><span class="toc-number">1.1.3.</span> <span class="toc-text">Hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">简单使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E4%B8%BB%E9%A2%98"><span class="toc-number">1.3.1.</span> <span class="toc-text">加载主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.2.</span> <span class="toc-text">修改主题配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E4%B9%A6%E5%86%99%E8%A7%84%E5%88%99"><span class="toc-number">1.3.3.</span> <span class="toc-text">博客书写规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.3.4.</span> <span class="toc-text">发布博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%88%AB%E8%AF%B4%E6%98%8E"><span class="toc-number">1.3.5.</span> <span class="toc-text">特别说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.6.</span> <span class="toc-text">可能遇到问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E8%AF%B4%E6%98%8E"><span class="toc-number">1.4.</span> <span class="toc-text">原理说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D"><span class="toc-number">1.5.</span> <span class="toc-text">绑定个人域名</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/02/28/%E5%87%86%E5%A4%87/" title="小白个人Android面试准备"><img src="https://pic.imgdb.cn/item/65df52089f345e8d030edde4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="小白个人Android面试准备"/></a><div class="content"><a class="title" href="/2024/02/28/%E5%87%86%E5%A4%87/" title="小白个人Android面试准备">小白个人Android面试准备</a><time datetime="2024-02-28T15:33:46.000Z" title="发表于 2024-02-28 23:33:46">2024-02-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/28/%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E5%87%86%E5%A4%87/" title="小白个人面试算法准备"><img src="https://pic.imgdb.cn/item/6602823e9f345e8d03cbcbff.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="小白个人面试算法准备"/></a><div class="content"><a class="title" href="/2024/02/28/%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E5%87%86%E5%A4%87/" title="小白个人面试算法准备">小白个人面试算法准备</a><time datetime="2024-02-28T15:33:46.000Z" title="发表于 2024-02-28 23:33:46">2024-02-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/24/Kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kotlin学习笔记"><img src="https://pic.imgdb.cn/item/65d9e5d59f345e8d03230185.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kotlin学习笔记"/></a><div class="content"><a class="title" href="/2024/02/24/Kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kotlin学习笔记">Kotlin学习笔记</a><time datetime="2024-02-24T15:29:30.000Z" title="发表于 2024-02-24 23:29:30">2024-02-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/24/Git%EF%BC%88B%E7%AB%99%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%89/" title="Git（B站学习笔记）"><img src="https://pic.imgdb.cn/item/6559956bc458853aefc5409e.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git（B站学习笔记）"/></a><div class="content"><a class="title" href="/2024/02/24/Git%EF%BC%88B%E7%AB%99%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%89/" title="Git（B站学习笔记）">Git（B站学习笔记）</a><time datetime="2024-02-24T12:45:00.000Z" title="发表于 2024-02-24 20:45:00">2024-02-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/18/maven/" title="Maven的使用"><img src="https://pic.imgdb.cn/item/65587027c458853aef156fb1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Maven的使用"/></a><div class="content"><a class="title" href="/2023/11/18/maven/" title="Maven的使用">Maven的使用</a><time datetime="2023-11-18T15:29:30.000Z" title="发表于 2023-11-18 23:29:30">2023-11-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By 无泪真伤</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Welcome to my blog! --by Wuleizhenshang</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false#  open shake (抖動特效);
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

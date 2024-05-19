@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Android导入项目及环境说明</title>
+      <link href="/2024/05/19/%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE%E5%92%8C%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/"/>
+      <url>/2024/05/19/%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE%E5%92%8C%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Android导入项目及环境说明"><a href="#Android导入项目及环境说明" class="headerlink" title="Android导入项目及环境说明"></a>Android导入项目及环境说明</h1><h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p>首先需要知道的是不同的版本的Android Studio支持的AGP版本范围是不同的，不同的AGP能支持的Gradle版本也是不同的，项目使用不同的API版本也需要不同的AGP支持，这就是几者之间的关系，具体需要可以参考官网。</p><p><a href="https://developer.android.google.cn/build/releases/gradle-plugin?hl=zh-cn#updating-gradle">Android Gradle 插件 8.4 版本说明  | Android Studio  | Android Developers (google.cn)</a></p><p>而项目使用的JDK只是构建项目使用</p><h2 id="导入项目因版本不匹配出现的编译错误"><a href="#导入项目因版本不匹配出现的编译错误" class="headerlink" title="导入项目因版本不匹配出现的编译错误"></a>导入项目因版本不匹配出现的编译错误</h2><p>一般JDK版本是没什么问题的，</p><p>主要看API版本先，旧版的Gradle构建出来的项目是可以在project级别的build.gradle中看到具体的API的版本，不行可以在app的build.gradle中看到具体的API版本，但是不同项目结构下可能出现的位置不同，在了解到具体的API版本后就可以确认AGP所需要的版本</p><p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240519220504876.png" alt="image-20240519220504876"></p><p>原本项目使用的SDK版本是34，需要最低AGP版本为8.1.1，但是我的Android Studio版本为Giraffe | 2022.3.1，可能无法支持这个AGP，那么我会考虑降低API版本为33，这时候就可以满足版本了，这里选择AGP8.0.0和Gradle8.0即可，这里就需要修改AGP版本，在新版构建的项目中可以在lib.versions.toml文件中修改AGP版本</p><p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240519220855441.png" alt="image-20240519220855441"></p><p>旧版本可以在project的build.gradle中的plugin中找到下面，就是AGP版本</p><p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240519221031789.png" alt="image-20240519221031789"></p><p>修改Gradle版本就简单了，在File-&gt;Project Structure-&gt;Project中就可以修改Gralde的版本和看到使用的AGP版本了，在下面的SDK Location中还可以看到SDK的位置和查阅SDK的版本和修改SDK版本，版本不对可以直接在这里下载所需要的SDK版本。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 开发常用 </tag>
+            
+            <tag> Android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>小白个人Android面试准备</title>
       <link href="/2024/02/28/%E5%87%86%E5%A4%87/"/>
       <url>/2024/02/28/%E5%87%86%E5%A4%87/</url>

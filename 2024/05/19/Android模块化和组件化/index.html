@@ -1,0 +1,326 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Android模块化开发和组件化开发 | Blog-无泪真伤</title><meta name="author" content="无泪真伤"><meta name="copyright" content="无泪真伤"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="Android模块化开发和组件化开发简介单工程项目 单工程项目结构    单工程项目的缺陷  随着应用的不断迭代更新，业务代码持续增加，随之而来的问题逐步呈现出来：  各种业务代码混杂在同一个模块中，开发人员在开发、调试过程中的效率越来越低，比如定位某个业务问题，需要在多个业务代码混合的模块中寻找和跳转。 工程师需要了解各个业务的功能，避免代码的改动影响其他业务的功能，导致开发和维护成本不断增加。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android模块化开发和组件化开发">
+<meta property="og:url" content="https://www.wuleizhenshang.love/2024/05/19/Android%E6%A8%A1%E5%9D%97%E5%8C%96%E5%92%8C%E7%BB%84%E4%BB%B6%E5%8C%96/index.html">
+<meta property="og:site_name" content="Blog-无泪真伤">
+<meta property="og:description" content="Android模块化开发和组件化开发简介单工程项目 单工程项目结构    单工程项目的缺陷  随着应用的不断迭代更新，业务代码持续增加，随之而来的问题逐步呈现出来：  各种业务代码混杂在同一个模块中，开发人员在开发、调试过程中的效率越来越低，比如定位某个业务问题，需要在多个业务代码混合的模块中寻找和跳转。 工程师需要了解各个业务的功能，避免代码的改动影响其他业务的功能，导致开发和维护成本不断增加。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/664a0d30d9c307b7e980f34a.jpg">
+<meta property="article:published_time" content="2024-05-19T14:31:00.000Z">
+<meta property="article:modified_time" content="2024-05-29T13:13:00.592Z">
+<meta property="article:author" content="无泪真伤">
+<meta property="article:tag" content="开发常用">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/664a0d30d9c307b7e980f34a.jpg"><link rel="shortcut icon" href="/img/86634.jpg"><link rel="canonical" href="https://www.wuleizhenshang.love/2024/05/19/Android%E6%A8%A1%E5%9D%97%E5%8C%96%E5%92%8C%E7%BB%84%E4%BB%B6%E5%8C%96/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 无泪真伤","link":"链接: ","source":"来源: Blog-无泪真伤","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Android模块化开发和组件化开发',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-29 21:13:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic.imgdb.cn/item/65582252c458853aeff7c6f5.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.imgdb.cn/item/664a0d30d9c307b7e980f34a.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Blog-无泪真伤"><span class="site-name">Blog-无泪真伤</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Android模块化开发和组件化开发</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-19T14:31:00.000Z" title="发表于 2024-05-19 22:31:00">2024-05-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-29T13:13:00.592Z" title="更新于 2024-05-29 21:13:00">2024-05-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Android/">Android</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Android模块化开发和组件化开发"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Android模块化开发和组件化开发"><a href="#Android模块化开发和组件化开发" class="headerlink" title="Android模块化开发和组件化开发"></a>Android模块化开发和组件化开发</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="单工程项目"><a href="#单工程项目" class="headerlink" title="单工程项目"></a>单工程项目</h3><ol>
+<li><strong>单工程项目结构</strong></li>
+</ol>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508162916729.png" alt="image-20240508162916729"></p>
+<ol start="2">
+<li><strong>单工程项目的缺陷</strong></li>
+</ol>
+<p>随着应用的不断迭代更新，业务代码持续增加，随之而来的问题逐步呈现出来：</p>
+<ul>
+<li>各种业务代码混杂在同一个模块中，开发人员在开发、调试过程中的效率越来越低，比如定位某个业务问题，需要在多个业务代码混合的模块中寻找和跳转。</li>
+<li>工程师需要了解各个业务的功能，避免代码的改动影响其他业务的功能，导致开发和维护成本不断增加。</li>
+<li>由于功能工程越来越庞大，编译完整代码所花费的时间越来越长。</li>
+<li>多人协同开发时，开发风格不一，又难以将业务完全分割，大家互相影响，导致开发效率低下。</li>
+<li>代码复用性差，写过的代码又很难抽离出来再次使用。</li>
+</ul>
+<h3 id="模块化和组件化"><a href="#模块化和组件化" class="headerlink" title="模块化和组件化"></a>模块化和组件化</h3><ol>
+<li><strong>什么是组件化</strong></li>
+</ol>
+<ul>
+<li>组件（Component），对数据和方法的简单封装，功能单一，高内聚，并且是业务能划分的最小粒度。</li>
+<li>组件化是基于可重用的目的，将大型的软件系统按照分离关注点的形式，拆分成多个独立的组件，使得整个软件系统也能做到电路板一样，是单个或多个组件元件组装起来，哪个组件坏了，整个系统可继续运行，而不出现崩溃或不正常现象，做到更少的耦合和更高的内聚。</li>
+</ul>
+<ol start="2">
+<li><strong>为什么需要使用组件化</strong></li>
+</ol>
+<p>组件化基于可重用的目的，将应用拆分成多个独立组件，以减少耦合，当然模块化也是可以解决缺陷的（模块化的概念可以看下面）：</p>
+<ul>
+<li>通过关注分离的形式，将APP分离成多个模块，每个模块都是一个组件。解决了各种业务代码耦合在一起的导致的问题</li>
+<li>开发的过程中，让这些组件被其他组件依赖，但是在调试时也可以单独成为独立的工程并且运行，这样就解决了因为编译时过多降低开发效率的问题</li>
+<li>多人开发中，每个组件模块由单人负责，降低了开发之间沟通的成本，减少因代码风格不一致而产生的相互影响</li>
+</ul>
+<ol start="3">
+<li><strong>模块化开发和组件化开发区别</strong></li>
+</ol>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508164106596.png" alt="image-20240508164106596"></p>
+<ol start="4">
+<li><strong>组件化要考虑的问题</strong></li>
+</ol>
+<p>在进行安卓应用程序的组件化设计时，有几个重要问题需要考虑：</p>
+<ul>
+<li><p>模块划分：</p>
+<p>需要合理划分应用程序的功能模块，确保每个模块具有清晰的职责和功能，避免功能重叠或耦合度过高的情况。</p>
+</li>
+<li><p>组件间通信：</p>
+<p>设计有效的组件间通信机制，确保不同组件之间能够进行数据传递、事件触发等操作，常见的通信方式包括使用接口、广播、事件总线等。</p>
+</li>
+<li><p>依赖管理：</p>
+<p>管理组件间的依赖关系，确保各个组件能够正确地引用和使用依赖的库、模块或服务，避免依赖冲突和版本不一致的问题。</p>
+</li>
+<li><p>路由和导航：</p>
+<p>设计灵活的路由和导航方案，确保不同组件之间能够进行页面跳转和交互，包括页面路由、参数传递、页面堆栈管理等。</p>
+</li>
+<li><p>组件生命周期管理：</p>
+<p>确保各个组件的生命周期能够正确地管理和调度，避免出现内存泄漏或资源泄漏等问题，尤其需要注意在组件销毁时释放资源。</p>
+</li>
+<li><p>UI组件的复用：</p>
+<p>考虑如何设计可复用的UI组件，以提高UI的一致性和开发效率，可以使用自定义View、Fragment等方式来实现UI组件的封装和复用。</p>
+</li>
+<li><p>构建和打包优化：</p>
+<p>优化构建和打包过程，减少应用程序的体积和启动时间，包括资源的合理管理、代码的优化和混淆等方面。</p>
+</li>
+<li><p>模块化团队协作：</p>
+<p>建立有效的团队协作机制和沟通渠道，确保各个团队能够协调一致地进行组件的开发和集成，可以采用版本控制、持续集成等方式来实现团队协作。</p>
+</li>
+</ul>
+<p><strong>下面是大牛整理出来的组件分层思想（每个人都可以有自己的分层思想）</strong></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508165826150.png" alt="image-20240508165826150"></p>
+<p><strong>（中间的功能组件层不一定要单独存在，可以之间在业务组件层实现）</strong></p>
+<h3 id="组件化和插件化"><a href="#组件化和插件化" class="headerlink" title="组件化和插件化"></a>组件化和插件化</h3><ol>
+<li><strong>组件化和插件化区别</strong></li>
+</ol>
+<ul>
+<li>插件化也是基于模块化的思想，将应用拆分成多个模块，而这些模块都是一个APK，最终打包时将宿主APK和插件APK分开打包。在程序运行时，宿主APK可以动态地选择并加载想要的插件APK</li>
+<li>插件化与组件化存在很多相似之处，但是它们的根本区别在于：<ul>
+<li>组件化的模块虽然在调试的时候可以切换到application独立运行，但是在最终打包时，每个模块始终都只是一个library，整个应用只有一个单独的APK。</li>
+<li>插件化只是拆分出多个APK，并且在运行时通过动态加载的技术方案，来加载这些插件APK。</li>
+</ul>
+</li>
+</ul>
+<h2 id="组件化项目搭建"><a href="#组件化项目搭建" class="headerlink" title="组件化项目搭建"></a>组件化项目搭建</h2><h3 id="搭建各层"><a href="#搭建各层" class="headerlink" title="搭建各层"></a>搭建各层</h3><p>业务组件层创建，选择如图的模块样版，这样可以自动生成可单独运行调试的Application</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508171510991.png" alt="image-20240508171510991"></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508171605942.png" alt="image-20240508171605942"></p>
+<p>基础组件层的创建，如果组件不需要进行application和library的切换就直接选择library</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508172926684.png" alt="image-20240508172926684"></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508172901338.png" alt="image-20240508172901338"></p>
+<p>最后新建一个功能组件层，这一层不是必需的，这里还是创建出来</p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508173106489.png" alt="image-20240508173106489"></p>
+<h3 id="对依赖进行统一管理"><a href="#对依赖进行统一管理" class="headerlink" title="对依赖进行统一管理"></a>对依赖进行统一管理</h3><p>项目会依赖许多的第三方库，如果不对其进行管理，可能会出现依赖冲突的问题</p>
+<p><strong>旧版本的gradle在项目的build.gradle添加ext块进行管理</strong></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里是groovy语言，在项目的build.gradle添加ext块进行管理</span></span><br><span class="line">ext &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//是否是debug模式，是模块就打包成application，不是就打包成library</span></span><br><span class="line">    isDebug = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//项目版本和sdk版本等管理</span></span><br><span class="line">    <span class="comment">//按照语法这其实就是数组</span></span><br><span class="line">    android = [</span><br><span class="line">            <span class="symbol">compileSdkVersion:</span> <span class="number">34</span>,</span><br><span class="line">            <span class="attr">minSdkVersion    :</span> <span class="number">24</span>,</span><br><span class="line">            <span class="attr">targetSdkVersion :</span> <span class="number">34</span>,</span><br><span class="line">            <span class="symbol">buildToolsVersion:</span> <span class="string">&quot;30.0.2&quot;</span>,</span><br><span class="line">            <span class="attr">versionCode      :</span> <span class="number">1</span>,</span><br><span class="line">            <span class="attr">versionName      :</span> <span class="string">&quot;1.0&quot;</span></span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用编译jdk版本</span></span><br><span class="line">    compileOptions = [</span><br><span class="line">            <span class="symbol">sourceCompatibility:</span> JavaVersion.VERSION_1_8,</span><br><span class="line">            <span class="symbol">targetCompatibility:</span> JavaVersion.VERSION_1_8,</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果模块打包成application就需要设置applicationId，这里配置项目中所有模块的applicationId</span></span><br><span class="line">    applicationId = [</span><br><span class="line">            <span class="string">&quot;app&quot;</span> : <span class="string">&quot;com.wuleizhenshang.componentstudyproject&quot;</span>,</span><br><span class="line">            <span class="string">&quot;main&quot;</span>: <span class="string">&quot;com.wuleizhenshang.mod_main&quot;</span></span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment">//统一管理lib和arr的版本</span></span><br><span class="line">    versions = [</span><br><span class="line">            <span class="string">&quot;appcompat&quot;</span>       : <span class="string">&quot;1.6.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;material&quot;</span>        : <span class="string">&quot;1.8.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;constraintlayout&quot;</span>: <span class="string">&quot;2.1.4&quot;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="string">&quot;ARouter&quot;</span>         : <span class="string">&quot;1.5.2&quot;</span>,</span><br><span class="line">            <span class="string">&quot;ARouterCompiler&quot;</span> : <span class="string">&quot;1.5.2&quot;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="string">&quot;Gson&quot;</span>            : <span class="string">&quot;2.10.1&quot;</span></span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment">//统一管理具体的lib</span></span><br><span class="line">    dependencies = [</span><br><span class="line">            <span class="string">&quot;appcompat&quot;</span>       : <span class="string">&quot;androidx.appcompat:appcompat:$versions.appcompat&quot;</span>,</span><br><span class="line">            <span class="string">&quot;material&quot;</span>        : <span class="string">&quot;com.google.android.material:material:$versions.material&quot;</span>,</span><br><span class="line">            <span class="string">&quot;constraintlayout&quot;</span>: <span class="string">&quot;androidx.constraintlayout:constraintlayout:$versions.constraintlayout&quot;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="attr">ARouter           :</span> <span class="string">&quot;com.alibaba:arouter-api:$versions.ARouter&quot;</span>,</span><br><span class="line">            <span class="attr">ARouterCompiler   :</span> <span class="string">&quot;com.alibaba:arouter-compiler:$versions.ARouterCompiler&quot;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="attr">Gson              :</span> <span class="string">&quot;com.google.code.gson:gson:$versions.Gson&quot;</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52458424/article/details/133825136?ops_request_misc=%7B%22request_id%22:%22171516545316800225556574%22,%22scm%22:%2220140713.130102334.pc_all.%22%7D&request_id=171516545316800225556574&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~times_rank-6-133825136-null-null.142%5Ev100%5Econtrol&utm_term=ext%E8%BF%9B%E8%A1%8C%E7%BB%9F%E4%B8%80%E7%9A%84gradle%E7%AE%A1%E7%90%86&spm=1018.2226.3001.4187">gradle7.4使用buildSrc统一管理依赖_buildsrc 目录-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shop_and_sleep/article/details/125719898">gradle项目依赖统一管理常用配置_gradle 统一管理依赖的version-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_52851967/article/details/125390597">Groovy语法介绍-CSDN博客</a></p>
+<p><strong>其他的mod可以如下使用即可</strong></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508213058904.png" alt="image-20240508213058904"></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508213459882.png" alt="image-20240508213459882"></p>
+<p><strong>在base组件下依赖即可，在lib_base下使用api进行依赖，具有传递性，使用implementation是不具有传递性的，android部分一些配置可以直接复制，记住lib不需要切换application，就不需要进行配置了，其他配置同理，这里就不进行过多粘贴，可以下载demo直接看，最后就是app module的配置</strong></p>
+<h3 id="切换application和library的module的AndroidManifest的配置"><a href="#切换application和library的module的AndroidManifest的配置" class="headerlink" title="切换application和library的module的AndroidManifest的配置"></a>切换application和library的module的AndroidManifest的配置</h3><p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508215003759.png" alt="image-20240508215003759"></p>
+<p><strong>新建debug文件夹后将原本的AndroidManifest复制到下面</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span> &gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:allowBackup</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">&quot;@string/app_name&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:roundIcon</span>=<span class="string">&quot;@mipmap/ic_launcher_round&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:supportsRtl</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:theme</span>=<span class="string">&quot;@style/Theme.ComponentStudyProject&quot;</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">&quot;.MainActivity&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span> &gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>将原本的修改为如下</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;application&gt;</span><br><span class="line">        &lt;activity android:name=&quot;.MainActivity&quot; /&gt;</span><br><span class="line">    &lt;/application&gt;</span><br><span class="line"></span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>之后修改选择</strong></p>
+<p><img src="https://gitee.com/wuleizhenshang/person-typora-programming-pic/raw/master/img/image-20240508215657216.png" alt="image-20240508215657216"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//修改AndroidManifest的选择</span><br><span class="line">sourceSets&#123;</span><br><span class="line">    main&#123;</span><br><span class="line">        if (config.isDebug)&#123;</span><br><span class="line">            manifest.srcFile &#x27;src/main/debug/AndroidManifest.xml&#x27;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            manifest.srcFile &#x27;src/main/AndroidManifest.xml&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ARouter的使用"><a href="#ARouter的使用" class="headerlink" title="ARouter的使用"></a>ARouter的使用</h3><p>具体使用可以看下面<strong>（一定要注意path的书写规则）</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/alibaba/ARouter/blob/master/README_CN.md">ARouter&#x2F;README_CN.md at master · alibaba&#x2F;ARouter (github.com)</a></p>
+<p>一些需要注意的坑</p>
+<p>注意在application进行初始化</p>
+<p>导入依赖的时候在base使用api进行依赖导入，依赖注解器的导入是在需要使用到的module再进行导入，而不是在base导入依赖注解器就可以了，也就是<code>annotationProcessor &#39;com.alibaba:arouter-compiler:x.x.x&#39;</code></p>
+<p>在gradle.properties下添加</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 启用Jetifier将support库转换成andoridX库</span><br><span class="line">android.enableJetifier=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zj20230712/articles/17568736.html">ARouter实现功能组件之间的Activity跳转 - 不喜不悲1116 - 博客园 (cnblogs.com)</a></p>
+<p>空指针异常看是不是写错路由了。。。（也要注意ARouter的path的书写规则）</p>
+<h2 id="项目使用"><a href="#项目使用" class="headerlink" title="项目使用"></a>项目使用</h2><p><a target="_blank" rel="noopener" href="https://wwm.lanzout.com/iNy7X204mo3g">ComponentStudyProject.zip - 蓝奏云 (lanzout.com)</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.wuleizhenshang.love">无泪真伤</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.wuleizhenshang.love/2024/05/19/Android%E6%A8%A1%E5%9D%97%E5%8C%96%E5%92%8C%E7%BB%84%E4%BB%B6%E5%8C%96/">https://www.wuleizhenshang.love/2024/05/19/Android%E6%A8%A1%E5%9D%97%E5%8C%96%E5%92%8C%E7%BB%84%E4%BB%B6%E5%8C%96/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.wuleizhenshang.love" target="_blank">Blog-无泪真伤</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8/">开发常用</a><a class="post-meta__tags" href="/tags/Android/">Android</a></div><div class="post_share"><div class="social-share" data-image="https://pic.imgdb.cn/item/664a0d30d9c307b7e980f34a.jpg" data-sites="wechat,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/05/19/%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE%E5%92%8C%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/" title="Android导入项目及环境说明"><img class="cover" src="https://pic.imgdb.cn/item/664a0a9ad9c307b7e97d01c6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Android导入项目及环境说明</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/05/19/%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE%E5%92%8C%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/" title="Android导入项目及环境说明"><img class="cover" src="https://pic.imgdb.cn/item/664a0a9ad9c307b7e97d01c6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-19</div><div class="title">Android导入项目及环境说明</div></div></a></div><div><a href="/2024/02/24/Git%EF%BC%88B%E7%AB%99%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%89/" title="Git（B站学习笔记）"><img class="cover" src="https://pic.imgdb.cn/item/6559956bc458853aefc5409e.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">Git（B站学习笔记）</div></div></a></div><div><a href="/2024/02/24/Kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kotlin学习笔记"><img class="cover" src="https://pic.imgdb.cn/item/65d9e5d59f345e8d03230185.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">Kotlin学习笔记</div></div></a></div><div><a href="/2023/11/18/maven/" title="Maven的使用"><img class="cover" src="https://pic.imgdb.cn/item/65587027c458853aef156fb1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-18</div><div class="title">Maven的使用</div></div></a></div><div><a href="/2023/11/18/%E7%AE%97%E6%B3%95/" title="算法"><img class="cover" src="https://pic.imgdb.cn/item/65587081c458853aef16f416.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-18</div><div class="title">算法</div></div></a></div><div><a href="/2022/02/24/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/" title="Android学习笔记"><img class="cover" src="https://pic.imgdb.cn/item/65dd5b1c9f345e8d035100ba.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-24</div><div class="title">Android学习笔记</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic.imgdb.cn/item/65582252c458853aeff7c6f5.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">无泪真伤</div><div class="author-info__description">不会爱，不愿爱！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wuleizhenshang"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本人新人一枚！写博客知识记录个人学习经历，有错误请见谅！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91%E5%92%8C%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91"><span class="toc-number">1.</span> <span class="toc-text">Android模块化开发和组件化开发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%B7%A5%E7%A8%8B%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text">单工程项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E5%92%8C%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="toc-number">1.1.2.</span> <span class="toc-text">模块化和组件化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%8C%96%E5%92%8C%E6%8F%92%E4%BB%B6%E5%8C%96"><span class="toc-number">1.1.3.</span> <span class="toc-text">组件化和插件化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%8C%96%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text">组件化项目搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%90%84%E5%B1%82"><span class="toc-number">1.2.1.</span> <span class="toc-text">搭建各层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BE%9D%E8%B5%96%E8%BF%9B%E8%A1%8C%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.2.</span> <span class="toc-text">对依赖进行统一管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2application%E5%92%8Clibrary%E7%9A%84module%E7%9A%84AndroidManifest%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.3.</span> <span class="toc-text">切换application和library的module的AndroidManifest的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ARouter%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.4.</span> <span class="toc-text">ARouter的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">项目使用</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/05/19/Android%E6%A8%A1%E5%9D%97%E5%8C%96%E5%92%8C%E7%BB%84%E4%BB%B6%E5%8C%96/" title="Android模块化开发和组件化开发"><img src="https://pic.imgdb.cn/item/664a0d30d9c307b7e980f34a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android模块化开发和组件化开发"/></a><div class="content"><a class="title" href="/2024/05/19/Android%E6%A8%A1%E5%9D%97%E5%8C%96%E5%92%8C%E7%BB%84%E4%BB%B6%E5%8C%96/" title="Android模块化开发和组件化开发">Android模块化开发和组件化开发</a><time datetime="2024-05-19T14:31:00.000Z" title="发表于 2024-05-19 22:31:00">2024-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/19/%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE%E5%92%8C%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/" title="Android导入项目及环境说明"><img src="https://pic.imgdb.cn/item/664a0a9ad9c307b7e97d01c6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android导入项目及环境说明"/></a><div class="content"><a class="title" href="/2024/05/19/%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE%E5%92%8C%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E/" title="Android导入项目及环境说明">Android导入项目及环境说明</a><time datetime="2024-05-19T14:18:00.000Z" title="发表于 2024-05-19 22:18:00">2024-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/28/%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E5%87%86%E5%A4%87/" title="小白个人面试算法准备"><img src="https://pic.imgdb.cn/item/6602823e9f345e8d03cbcbff.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="小白个人面试算法准备"/></a><div class="content"><a class="title" href="/2024/02/28/%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E5%87%86%E5%A4%87/" title="小白个人面试算法准备">小白个人面试算法准备</a><time datetime="2024-02-28T15:33:46.000Z" title="发表于 2024-02-28 23:33:46">2024-02-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/28/%E5%87%86%E5%A4%87/" title="小白个人Android面试准备"><img src="https://pic.imgdb.cn/item/65df52089f345e8d030edde4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="小白个人Android面试准备"/></a><div class="content"><a class="title" href="/2024/02/28/%E5%87%86%E5%A4%87/" title="小白个人Android面试准备">小白个人Android面试准备</a><time datetime="2024-02-28T15:33:46.000Z" title="发表于 2024-02-28 23:33:46">2024-02-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/24/Kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kotlin学习笔记"><img src="https://pic.imgdb.cn/item/65d9e5d59f345e8d03230185.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kotlin学习笔记"/></a><div class="content"><a class="title" href="/2024/02/24/Kotlin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Kotlin学习笔记">Kotlin学习笔记</a><time datetime="2024-02-24T15:29:30.000Z" title="发表于 2024-02-24 23:29:30">2024-02-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By 无泪真伤</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Welcome to my blog! --by Wuleizhenshang</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false#  open shake (抖動特效);
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

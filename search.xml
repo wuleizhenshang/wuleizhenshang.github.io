@@ -29,6 +29,31 @@
     
     
     <entry>
+      <title>面试准备（安卓部分）</title>
+      <link href="/2024/06/19/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87(%E5%AE%89%E5%8D%93%E9%83%A8%E5%88%86)/"/>
+      <url>/2024/06/19/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87(%E5%AE%89%E5%8D%93%E9%83%A8%E5%88%86)/</url>
+      
+        <content type="html"><![CDATA[<h1 id="面试准备（安卓部分）"><a href="#面试准备（安卓部分）" class="headerlink" title="面试准备（安卓部分）"></a>面试准备（安卓部分）</h1><h2 id="View的首次绘制-绘制部分也在这里"><a href="#View的首次绘制-绘制部分也在这里" class="headerlink" title="View的首次绘制(绘制部分也在这里)"></a>View的首次绘制(绘制部分也在这里)</h2><p>view的第一次绘制是在activityThread中的handleResumeActivity中去实现的，activityThread是操作activity的一个线程，非常重要的一个类。这里先简单地说下吧。</p><ul><li>首先整个系统开机(加载boot_loader)的时候</li><li>会先出现一个init进程</li><li>init进程fork一个zygote进程</li><li>zygote进程fork出system_server</li><li>system_server启动后，很多系统的进程例如AMS,WMS,PMS都是该进程创建后启动的</li><li>launcher进程启动后，触发了startActivity，通过binder机制告诉system_server</li><li>system_server接收到要启动activity的消息,system_server中的AMS会去通过socket告诉zygote进程，fork出app的进程。</li><li>app进程执行activityThread的main入口，并初始化ApplicationThread（继承了activityThread，同时实现了IBinder的接口）用于和AMS交互</li><li>applicationThread通过binder机制告诉system_server，我要绑定AMS，system_server收到通知，向app进程发送handleBindApplication请求，并scheduleLaunchActivity请求。</li><li>app进程收到请求后，通过handler向activityThread发送对应的message，执行对应的消息。最后完成对应的生命周期方法onCreate&#x2F;onResume等。</li></ul><p><strong>需要注意的是先走的onCreate的生命周期，也就是先走的setContentView，然后当视图加载到DecorView中的时候才会触发requestLayout方法</strong></p><p>可以看到在handleResumeActivity中通过wm去addview来添加decorview，wm是windowmanagerImpl。 windowmangerImpl.addView-&gt;windowManagerGlobal.addView-&gt;ViewRootImpl.setView-&gt;ViewRootImpl.requestLayout就触发了第一次的view的绘制。</p><p><strong>setContentView源码分析</strong></p><p>以上就是setContentView加载view的流程，至此我们简单总结一下从activity创建到view的创建的流程：</p><ul><li>1.应用启动之后，执行activity的oncreate方法，在方法里setContentView；</li><li>2.通过调用phonewindow的setContentView，执行layoutinfalter的inflate方法去加载布局；</li><li>3.在inflate方法里，用XmlPullParser解析xml；</li><li>4.解析过程中，可以手动设置factory，如果未设置走默认创建view的流程，也就是通过反射调用类的构造新建view。</li></ul><p><strong>requestLayout触发了view的第一次绘制后的具体View绘制</strong></p><p>从上面可以看到是ViewRootImpl去执行requestLayout去进行第一次View的绘制的</p><p>首先检查是否在主线程中，最后执行scheduleTraversals，这个方法中的主要流程是performTraversals -&gt; performMeasure -&gt; performLayout -&gt; performDraw performMeasure都会先去判断是否需要重新测量？需要的话调用measure，其他两个方法同理。</p><ul><li><strong>View的测量-onMeasure</strong></li></ul><p>对于 ViewGroup，除了要完成自己的测量，还要遍历调用子元素的 measure() 方法，而 View 只需要通过 measure() 方法就能确定测量规格。</p><p>View 的测量过程由 View 的 measure() 方法完成，measure() 方法是一个 final 类型的方法，子类不能重写。</p><p>View 的 measure() 方法会调用 onMeasure() 方法，这个方法我们是可以重写的，onMeasure() 的实现如下。</p><p>widthMeasureSpec 和 heightMeasureSpec 是从父 View 传过来的宽高测量规格，getDefaultSize() 方法是用来获取默认宽高的，getDefaultSize() 的实现如下。</p><p>从 getDefaultSize() 方法中可以看出，当测量模式为 UNSPECIFIED 时，宽&#x2F;高就是最小宽&#x2F;高，当测量模式为 AT_MOST 或 EXACTLY 时，宽&#x2F;高就是 ViewGroup 指定的 SpecSize。</p><p>View 的宽&#x2F;高由 specSize 决定，直接继承 View 的自定义控件需要重写 onMeasure() 方法并设置 wrap_content 时的自身大小，否则咋布局中使用 wrap_content 相当于使用 match_parent 。</p><p>从前面的代码可以了解到，如果 View 在布局中使用 wrap_content，那么它的 specMode 是 AT_MOST 模式，这时它的宽&#x2F;高为 specSize ，这时 View 的 specSize 为 ViewGroup 的 specSize。</p><p><strong>MeasureSpec</strong></p><p>MeasureSpec代表了宽高的尺寸要求，是一个int型的32位参数。前两位代表的是mode后面30位代表的是size。 mode一般分三种：</p><ul><li>UNSPECIFIED 不指定大小；</li><li>EXACTLY 精准大小；</li><li>AT_MOST 最大值模式；</li></ul><p>makeMeasureSpec将mode和size打包成int型的MeasureSpec；</p><p><strong>LayoutParams</strong></p><p>LayoutParams被view用于告诉父布局想被怎样包裹。</p><p>MATCH_PARENT:该view希望和父布局一样大。<br>WRAP_CONTENT:该view希望包裹住其内容。</p><p>onMeasure的方法很简单，就是调用了setMeasuredDimension().这个方法其实就是最终将width和height赋值给了全局变量保存了起来，因此一旦调用了这个方法意味着此view的测量结束。注意注释里提到的一句话：必须重写setMeasureDimension这个方法，不然会由measure抛出异常。 继续看getDefaultSize().</p><p>如果specMode是AT_MOST和EXACTLY,则尺寸就是specSize。而默认的specSize就是父布局传入进来的。</p><p>最小的建议宽度和高度是由view的bg和设置的大小决定的。</p><p><strong>测量</strong></p><p>ViewGroup的测量从MeasureChilderen开始，实际内部是递归调用了MeasureChild(属性为gone的不测量)，让我们直接看MeasureChild这个方法：</p><p>结合父布局的MeasureSpec和子view的宽高params等，再调用getChildMeasureSpec来调整子view的measureSpec，最后调用子view的measure方法进行处理。那继续看下getChildMeasureSpec是怎么调整的</p><p>（childDimension是宽高，padding是边界大小）三个mode其实差不多，简单来说就是：如果发现childDimension是一个具体数值&gt;&#x3D;0，那么设为exactly，如果是match_parent，resultmode设置为exactly；如果是wrap_content，设为AT_MOST; ok。至此就是viewGroup的测量。 使用view的getMeasureWidth&#x2F;Height可以获取view的大小，但是必须在onMeasure流程结束后获取。</p><ul><li><strong>View的布局 onLayout</strong></li></ul><p>layout() 方法的作用是 ViewGroup 用于确定子元素的位置，当 ViewGroup 的位置确定后，会在 onLayout() 方法中遍历所有子 View 并调用子 View 的 layout() 方法。</p><p>layout() 方法用于确定 View 自己的位置，而 onLayout() 方法则用于确定所有子元素的位置，View 的 layout() 方法首先会通过 setFrame() 方法设定 View 的边框，也就是 mLeft、mRight、mTop 和 mBottom 四个顶点的值，这时 View 在父 View 中的位置就确定了。</p><p>设定了四个顶点后，layout() 方法就会调用 onLayout() 方法确定子 View 的位置，View 和 ViewGroup 都没有实现 onLayout() 方法，由子类去实现</p><ul><li><strong>onDraw</strong></li></ul><p>View 绘制分为下面 6 步：</p><ol><li>绘制背景</li><li>保存 Canvas 图层为后续淡出做准备（可选）</li><li>绘制 View 的内容</li><li>绘制子 View (dispatchDraw)</li><li>绘制淡出边缘并恢复 Canvas 图层（可选）</li><li>绘制装饰（比如 foreground 和 scrollbar）</li></ol><p>一般情况下第 2 步和第 5 步是不执行的。</p><h2 id="View的事件传递"><a href="#View的事件传递" class="headerlink" title="View的事件传递"></a>View的事件传递</h2><p><a href="https://juejin.cn/post/6844903489483587592?searchId=20240619112752D6E499E1A4B6F42FEAE4">【图解】Android View 事件传递机制 - 掘金 (juejin.cn)</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其他 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 其他 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>面试准备(Java部分)</title>
       <link href="/2024/06/19/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87(java%E9%83%A8%E5%88%86)/"/>
       <url>/2024/06/19/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87(java%E9%83%A8%E5%88%86)/</url>
